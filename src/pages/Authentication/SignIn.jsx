@@ -59,7 +59,7 @@ const SignIn = () => {
                     </Form.Group>
 
                     <Button type="submit" variant="secondary" className='mt-2 w-100'>
-                        Sign Up
+                        Sign In
                     </Button>
                 </Form>
                 <Button onClick={handleDummySignIn} type="submit" variant="primary" className='mt-2'>
