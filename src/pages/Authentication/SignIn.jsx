@@ -29,6 +29,19 @@ const SignIn = () => {
             throwErrorMessage(error)
         }
     };
+    
+    const handleDummySignIn = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await baseAPI.post('/v1/user/login', { email: "raj@gmail.com", password: "123456789" });
+            localStorage.setItem(SESSION_TOKEN, response.data.token)
+            navigate("/")
+        } catch (error) {
+            console.error(error);
+            throwErrorMessage(error)
+        }
+    };
 
     return (
         <div className="h-100 w-100 d-flex align-items-center justify-content-center">
@@ -45,10 +58,13 @@ const SignIn = () => {
                         <Form.Control type="password" value={userData.password} onChange={(e) => handleOnChange("password", e.target.value)} required />
                     </Form.Group>
 
-                    <Button type="submit" variant="primary">
+                    <Button type="submit" variant="secondary" className='mt-2 w-100'>
                         Sign Up
                     </Button>
                 </Form>
+                <Button onClick={handleDummySignIn} type="submit" variant="primary" className='mt-2'>
+                    Test Sign In
+                </Button>
             </div>
         </div>
     );
